@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 char* toRoman(int a);
 
@@ -26,7 +27,10 @@ char* toRoman(int a)
     /*[I,V,X ,L ,C  ,D  ,M]
      *[1,5,10,50,100,500,1000]*/
     int numerals[7];
+    char result[1024] = "";
+    const char symbols[7] ="IVXLCDM";
 
+    /*Create array of numerals*/
     numerals[6] = a/1000;
     a -= 1000*numerals[6];
 
@@ -53,4 +57,65 @@ char* toRoman(int a)
     {
         printf("%d ", numerals[i]);
     }
+    printf("\n");
+
+    /*Construct result string*/
+
+    for (int j = 0; j < numerals[6]; ++j)
+    {
+
+        strcat(result, "M");
+    }
+
+    for (int j = 0; j < numerals[5]; ++j)
+    {
+
+        strcat(result, "D");
+    }
+
+    for (int j = 0; j < numerals[4]; ++j)
+    {
+
+        strcat(result, "C");
+    }
+
+    for (int j = 0; j < numerals[3]; ++j)
+    {
+
+        strcat(result, "L");
+    }
+
+    for (int j = 0; j < numerals[2]; ++j)
+    {
+
+        strcat(result, "X");
+    }
+
+    for (int j = 0; j < numerals[1]; ++j)
+    {
+
+        strcat(result, "V");
+    }
+
+    for (int j = 0; j < numerals[0]; ++j)
+    {
+
+        strcat(result, "I");
+    }
+
+
+
+//    if (numerals[4] >= 4)
+//    {
+//        strcat(result, "CD");
+//        numerals[4] = 0;
+//        --numerals[5];
+//    }
+//
+//    for (int k = 0; k < numerals[5]; ++k)
+//    {
+//        strcat(result, "D");
+//    }
+
+    printf("%s", result);
 }
