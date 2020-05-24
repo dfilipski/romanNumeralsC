@@ -30,28 +30,14 @@ void toRoman(int a, char result[])
 	const int value[13] = { 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000 };
 	const char *roman[13] = { "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M" };
 
-	int numerals[13];
-
     /*Create array of numerals*/
 	for (int i = 0; i < 13; ++i)
 	{
 		int index = 12 - i;
-        numerals[index] = a / value[index];
-		a -= value[index] * numerals[index];
-	}
+		int count = a / value[index];
+		a -= value[index] * count;
 
-//    printf("Numerals Array: ");
-//    for (int i = 0; i < 13; ++i)
-//    {
-//        printf("%d ", numerals[i]);
-//    }
-//    printf("\n");
-
-    /*Construct result string*/
-	for (int i = 0; i < 13; ++i)
-	{
-		int index = 12 - i;
-		for (int j = 0; j < numerals[index]; ++j)
+		for (int j = 0; j < count; ++j)
 		{
 			strcat(result, roman[index]);
 		}
